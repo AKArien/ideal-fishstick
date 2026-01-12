@@ -3,37 +3,40 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const thingsToDo = [
 	{
-		entry = "Decide what theme this should be built around",
-		done = false,
+		entry: "Decide what theme this should be built around",
+		done: false,
 	},
 	{
-		entry = "Add more things here"
-		done = false,
+		entry: "Add more things here",
+		done: false,
 	},
 	{
-		entry = "Make it pretty !",
-		done = false,
+		entry: "Make it pretty !",
+		done: false,
 	},
 ]
 
 export default function Home() {
 	return (
+		<>
 		<View style={title}>
 			<Text>Title card</Text>
 		</View>
 		<View style={styles.container}>
 			<Text>Time to make an app</Text>
-		<StatusBar style="auto" />
 		</View>
+		<StatusBar style="auto" />
 		<FlatList
 			data = {thingsToDo}
-			renderItem={({item}) => <Text>{item.entry}}</Text>
+			renderItem={({item}) => <Text>{item.entry}</Text>}
+			keyExtractor={item => item.entry}
 		/>
+		</>
 	);
 }
 
 const styles = StyleSheet.create({
-	title {
+	title: {
 		fontWeight: 'bold',
 		marginVertical: 8,
 	},

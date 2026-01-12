@@ -9,8 +9,11 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@babel/types": "^7.28.5",
+    "bundleToString": "link:@expo/metro/metro/lib/bundleToString",
     "expo": "~54.0.31",
     "expo-status-bar": "~3.0.9",
+    "js-tokens": "^10.0.0",
     "react": "19.1.0",
     "react-native": "0.81.5"
   },
