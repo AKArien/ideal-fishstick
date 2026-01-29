@@ -8,32 +8,18 @@ const sections = [
 		img: "",
 	},
 	{
-		entry: "Splatfests",
-		goto: "splatfests",
+		entry: "View by map",
+		goto: "maps",
 		img: "",
 	},
 	{
-		entry: "Gear",
-		goto: "gear"
+		entry: "View by weapon",
+		goto: "weapons",
 		img: "",
 	},
 ]
 
-export default function home({navigation, route}) {
-
-	const render_section = (section) => {
-		return (
-			<Pressable onPress={navigation.navigate(section.goto)}>
-				<Image
-
-				/>
-				<Text>
-
-				</Text>
-			</Pressable>
-		)
-	}
-	
+export default const home = ({navigation, route}) => {
 	return (
 		<>
 			<View style={styles.title}>
@@ -44,8 +30,14 @@ export default function home({navigation, route}) {
 			</View>
 			<StatusBar style="auto" />
 			<FlatList
-				data = {sections}
-				renderItem={render_section}
+				data={sections}
+				renderItem={(section) =>
+					<Card
+						text={section.entry}
+						img={section.img}
+						goto={section.goto}
+					/>
+				}
 				keyExtractor={(item, index) => item[index]}
 			/>
 		</>
