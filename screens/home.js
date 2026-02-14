@@ -19,7 +19,7 @@ const sections = [
 	},
 ]
 
-export default const home = ({navigation, route}) => {
+export default home = ({navigation, route}) => {
 	return (
 		<>
 			<View style={styles.title}>
