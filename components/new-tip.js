@@ -10,33 +10,34 @@ export default NewTip = ({forId}) => {
 		// call to firebase
 	}
 
-	const top = () => {
+	const StatusHead = () => {
+		if (doneSubmitting == null){
+			return
+		}
 
-		return (
-			if (doneSubmitting == true){
-				return (
-					<Text style={styles.success}>Tip successfully submitted !</Text>
-				)
-			}
+		if (doneSubmitting == true){
+			return (
+				<Text style={styles.success}>Tip successfully submitted !</Text>
+			)
+		}
 
-			if (doneSubmitting == false){
-				return (
-					<ActivityIndicator/>
-				)
-			}
+		if (doneSubmitting == false){
+			return (
+				<ActivityIndicator/>
+			)
+		}
 
-			if (error){
-				return (
-					<Text>{error}</Text>
-				)
-			}
-		)
+		if (error){
+			return (
+				<Text>{error}</Text>
+			)
+		}
 
 	}
 
 	return (
 		<>
-			<top/>
+			<StatusHead/>
 			<TextInput
 				onChangeText={onChangeText}
 				value={text}
