@@ -1,15 +1,21 @@
+import { StyleSheet, Text, Pressable, Image } from 'react-native'
 
-export default const Card = ({text, img, goto}) => {
+export const Card = ({text, img, goto, navigation} ) => {
+
 	return (
-		<Pressable onPress={navigation.navigate(section.goto)}>
+		<Pressable onPress={navigation.navigate(goto, {})}>
 			<Image
-				style={}
-				source={{uri: section.img}}
+				style={styles.image}
+				source={{uri: img}}
 			/>
 			<Text>
-				{section.entry}
+				{text}
 			</Text>
 		</Pressable>
 	)
 }
 
+const styles = StyleSheet.create({
+	image: {
+	}
+});
