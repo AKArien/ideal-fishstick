@@ -3,27 +3,28 @@ import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable} from 'r
 
 import {schedules_all} from "../services/splat3"
 
-export const Rotations = ({navigation, route}) => {
-	const [rotations, setRotations] = useState(null);
+export const Modes = ({navigation, route}) => {
+	const [modes, setModes] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		async function get(){
 			try {
-				setRotations(await schedules_all())
+				setModes(await schedules_all())
 				setLoading(false)
 			}
 			catch (error){
+				setLoading(false)
 				setError(error)
 			}
 		}
 		get()
-	}, [setRotations, setLoading, setError])
+	}, [])
 
-	return (loading ? <ActivityIndicator/> : error ? <Text>{error}</Text> :
+	return (loading ? <ActivityIndicator/> : error ? <Text>{String(error)}</Text> :
 		<FlatList
-			data={sections}
+			data={rotations}
 			renderItem={(section) =>
 				<Card
 					text={section.entry}
@@ -32,7 +33,7 @@ export const Rotations = ({navigation, route}) => {
 					navigation={navigation}
 				/>
 			}
-			keyExtractor={(item, index) => item[index]}
+			keyExtractor={(item, index) => index.toString()}
 		/>
 	)
 }

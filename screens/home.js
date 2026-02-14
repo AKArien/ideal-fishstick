@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, FlatList, Pressable} from 'react-native'
+import { StyleSheet, Text, View, FlatList } from 'react-native'
 
 import {Card} from "../components/cards"
 
 const sections = [
 	{
-		entry: "Rotations",
-		goto: "rotations",
+		entry: "Modes",
+		goto: "modes",
 		img: "",
 	},
 	{
@@ -33,11 +33,11 @@ export const Home = ({navigation, route}) => {
 			<StatusBar style="auto" />
 			<FlatList
 				data={sections}
-				renderItem={(section) =>
+				renderItem={({item}) =>
 					<Card
-						text={section.entry}
-						img={section.img}
-						goto={section.goto}
+						text={item.entry}
+						img={item.img}
+						goto={item.goto}
 						navigation={navigation}
 					/>
 				}

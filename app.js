@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { Home } from "./screens/home.js"
-import { Rotations } from "./screens/rotations.js"
+import { Modes } from "./screens/modes.js"
 
 const Stack = createNativeStackNavigator()
 
@@ -10,7 +10,7 @@ export default function app(){
 		<NavigationContainer>
 			<Stack.Navigator>
 				<Stack.Screen name="home" component={Home} />
-				<Stack.Screen name="rotations" component={Rotations} />
+				<Stack.Screen name="modes" component={Modes} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
