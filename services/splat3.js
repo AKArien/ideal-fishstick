@@ -8,6 +8,23 @@ export const turf_sched = async () => {
 	return await schedules_all.regularSchedules.nodes
 }
 
-export const anarchy_sched = async () => {
-	return await schedules_all.bankaraSchedules.nodes
+// extracts data from bankara schedules, as it’s formatted slightly differently, into the same format as the others
+const an_sched_helper = async (index) => {
+	const reconstruct = await schedules_all.bankaraSchedules.nodes
+	await schedules_all.bankaraSchedules.nodes.forEach(element => {
+		reconstruct[toString(element)].bankaraMatchSettings = reconstruct[toString(element)].bankaraMatchSettings[index]
+	});
+	return reconstruct
+}
+
+export const an_series_sched = async () => {
+	return await an_sched_helper("0")
+}
+
+export const an_open_sched = async () => {
+	return await an_sched_helper("1")
+}
+
+export const x_sched = async () => {
+	return await schedules_all.xSchedules.nodes
 }
