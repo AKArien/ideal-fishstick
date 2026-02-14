@@ -32,5 +32,3 @@ const get_w_cache = async (url, age_limit) => {
 		throw error
 	}
 }
-
-export get_w_cache
