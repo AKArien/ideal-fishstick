@@ -1,3 +1,4 @@
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable} from 'react-native'
 
 export const Schedule = ({navigation, route}) => {
 	const {get_sched_fn} = route.params
