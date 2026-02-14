@@ -1,26 +1,8 @@
+import { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable} from 'react-native'
 
-export const Schedule = ({navigation, route}) => {
-	const {get_sched_fn} = route.params
-
-	const [sched, setSched] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
-
-	useEffect(() => {
-		async function get(){
-			try {
-				setSched(await get_sched_fn())
-				setLoading(false)
-			}
-			catch (error){
-				setLoading(false)
-				setError(error)
-			}
-		}
-		get()
-	}, [])
-
+export const Schedule = (sched, navigation) => {
+	
 	const RenderStage = ({stage}) => {
 		return (
 			<Card
