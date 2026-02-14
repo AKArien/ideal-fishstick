@@ -1,5 +1,5 @@
 
-export default rotations = ({navigation, route}) => {
+export const Rotations = ({navigation, route}) => {
 	const [rotations, setRotations] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -16,6 +16,7 @@ export default rotations = ({navigation, route}) => {
 					text={section.entry}
 					img={section.img}
 					goto={section.goto}
+					navigation={navigation}
 				/>
 			}
 			keyExtractor={(item, index) => item[index]}

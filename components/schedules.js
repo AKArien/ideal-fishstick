@@ -1,7 +1,7 @@
 
-export default function generic_schedule({navigate, nodes, render}){
+export const generic_schedule = ({navigate, nodes, render}) => {
 
-	const render_stage = ({stage} => {
+	const render_stage = ({stage}) => {
 		return (
 			<Pressable onPress={navigation.navigate(stage)}>
 				<Image
@@ -13,16 +13,16 @@ export default function generic_schedule({navigate, nodes, render}){
 				</Text>
 			</Pressable>
 		)
-	})
+	}
 
-	const render_section = ({item} => {
+	const render_section = ({item}) => {
 		return (
 			<>
 				
 				<render_stage stage={item.regularMatchSetting.vsStages."0"} />
 				<render_stage stage={item.regularMatchSetting.vsStages."1"} />
 			</>
-	})
+	}
 
 	return (
 		<>

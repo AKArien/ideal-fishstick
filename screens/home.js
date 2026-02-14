@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, FlatList, Pressable} from 'react-native'
 
+import {Card} from "../components/cards"
+
 const sections = [
 	{
 		entry: "Rotations",
@@ -19,7 +21,7 @@ const sections = [
 	},
 ]
 
-export default home = ({navigation, route}) => {
+export const Home = ({navigation, route}) => {
 	return (
 		<>
 			<View style={styles.title}>
@@ -36,9 +38,10 @@ export default home = ({navigation, route}) => {
 						text={section.entry}
 						img={section.img}
 						goto={section.goto}
+						navigation={navigation}
 					/>
 				}
-				keyExtractor={(item, index) => item[index]}
+				keyExtractor={(item) => item.goto}
 			/>
 		</>
 	);

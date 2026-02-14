@@ -1,6 +1,6 @@
+import { Text } from 'react-native'
 
-
-export const default NewTip = ({forId}) => {
+export default NewTip = ({forId}) => {
 	const { forId } = props
 	const [text, onChangeText] = useState("")
 	const [doneSubmitting, setDoneSubmitting] = useState(null)
