@@ -25,7 +25,8 @@ export const Schedule = ({navigation, route}) => {
 			<Card
 				text={stage.name}
 				img={stage.image.url}
-				goto={"map-detail", stage.vsStageId}
+				goto={"map-detail"}
+				gotoArg={stage.vsStageId}
 				navigation={navigation}
 			/>
 		)
@@ -34,9 +35,9 @@ export const Schedule = ({navigation, route}) => {
 	const render_section = (item) => {
 		return (
 			<>
-				<Text>Current stages</Text>
-				<RenderStage stage={item."0"} />
-				<RenderStage stage={item."1"} />
+				
+				<RenderStage stage={item["0"]} />
+				<RenderStage stage={item["1"]} />
 			</>
 		)
 	}
@@ -44,7 +45,7 @@ export const Schedule = ({navigation, route}) => {
 	return (
 		<>
 			<FlatList
-				data = {vsStages}
+				data = {sched}
 				renderItem={render_section}
 				keyExtractor={(item, index) => item[index]}
 			/>
