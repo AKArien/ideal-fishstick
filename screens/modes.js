@@ -1,35 +1,49 @@
-import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable} from 'react-native'
 
-import {schedules_all} from "../services/splat3"
+import {Card} from "../components/cards"
+import {turf_sched, anarchy_sched, x_sched} from "../services/splat3"
+
+const sections = [
+	{
+		entry: "Turf war",
+		goto: "schedules",
+		gotoArg: {
+			get_sched_fn: turf_sched,
+
+		},
+		img: "",
+	},
+	{
+		entry: "Anarchy series",
+		goto: "schedules",
+		gotoArg: {},
+		img: "",
+	},
+	{
+		entry: "Anarchy open",
+		goto: "schedules",
+		gotoArg: {},
+		img: "",
+	},
+	{
+		entry: "X battles",
+		goto: "schedules",
+		gotoArg: {},
+		img: "",
+	},
+]
 
 export const Modes = ({navigation, route}) => {
-	const [modes, setModes] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
 
-	useEffect(() => {
-		async function get(){
-			try {
-				setModes(await schedules_all())
-				setLoading(false)
-			}
-			catch (error){
-				setLoading(false)
-				setError(error)
-			}
-		}
-		get()
-	}, [])
-
-	return (loading ? <ActivityIndicator/> : error ? <Text>{String(error)}</Text> :
+	return (
 		<FlatList
-			data={rotations}
+			data={sections}
 			renderItem={(section) =>
 				<Card
 					text={section.entry}
 					img={section.img}
 					goto={section.goto}
+					gotoArg={section.gotoArg}
 					navigation={navigation}
 				/>
 			}
