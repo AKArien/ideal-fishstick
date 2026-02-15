@@ -59,36 +59,50 @@ export const NewTip = ({forId}) => {
 	return (
 		<>
 			<StatusHead/>
-			<TextInput
-				onChangeText={onChangeText}
-				value={text}
-				placeholder="Your tip"
-			/>
-			<View style={styles.actionRow}>
-				<Button
-					onPress={submit}
-					title="Submit"
-					disabled={!text || text.trim() === ""}
-					style={styles.submit}
+			<View style={styles.inputRow}>
+				<TextInput
+					onChangeText={onChangeText}
+					value={text}
+					placeholder="Your tip"
+					style={styles.textInput}
+					placeholderTextColor="#999"
 				/>
-				<WeaponPicker 
-					selectedWeapon={weapon}
-					onWeaponSelect={setWeapon}
-				/>
+				<View style={styles.controlsColumn}>
+					<Button
+						onPress={submit}
+						title="Submit"
+						disabled={!text || text.trim() === ""}
+					/>
+					<WeaponPicker 
+						selectedWeapon={weapon}
+						onWeaponSelect={setWeapon}
+					/>
+				</View>
 			</View>
 		</>
-
 	)
 }
 
 const styles = StyleSheet.create({
-	actionRow: {
+	inputRow: {
 		flexDirection: 'row',
-		alignItems: 'center',
 		gap: 10,
 	},
-	submit: {
+	textInput: {
 		flex: 1,
+		color: 'white',
+		borderWidth: 1,
+		borderColor: '#ccc',
+		padding: 10,
+		borderRadius: 5,
+		fontFamily: 'Splatoon',
+
 	},
-	success: {}
+	controlsColumn: {
+		justifyContent: 'space-between',
+		gap: 10,
+	},
+	success: {
+		color: 'white',
+	}
 })
