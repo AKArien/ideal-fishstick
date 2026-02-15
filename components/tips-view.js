@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react"
 import { ActivityIndicator, Text, FlatList, Image, View, StyleSheet, TextInput, Button, Pressable } from "react-native"
 
-import { getTips, getWeapons, updateTip, deleteTip, getTipsFiltered } from "../services/firebase"
+import { getWeapons, updateTip, deleteTip, getTipsFiltered } from "../services/firebase"
 import { WeaponPicker } from "./weapon-picker"
-import { doc } from 'firebase/firestore'
-import { db } from '../services/firebase'
 
 export const TipsView = ({forId}) => {
 	const [tips, setTips] = useState(null)
@@ -35,7 +33,7 @@ export const TipsView = ({forId}) => {
 			setWeapons(weaponsMap)
 		})
 	}, [forId])
-
+	
 	const startEdit = (item) => {
 		setEditingId(item.id)
 		setEditText(item.content)
@@ -52,10 +50,11 @@ export const TipsView = ({forId}) => {
 		updateTip({
 			id: item.id,
 			content: editText,
-			weapon: editWeapon ? doc(db, 'weapons', editWeapon) : null
+			weapon: editWeapon
 		})
 		cancelEdit()
 	}
+
 
 	const handleDelete = (item) => {
 		deleteTip(item)
