@@ -3,7 +3,7 @@ import {NewTip} from "../components/new-tip"
 import {TipsView} from "../components/tips-view"
 
 export const MapDetail = ({navigation, route}) => {
-	const { id, name, img } = route
+	const { id, name, img } = route.params
 
 	// todo : put throbber colour by the match mode
 	return (
@@ -11,7 +11,6 @@ export const MapDetail = ({navigation, route}) => {
 			<Card
 				text={name}
 				img={img}
-				goto={id}
 			/>
 			<NewTip
 				forId={id}

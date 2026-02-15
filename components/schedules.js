@@ -12,7 +12,11 @@ export const Schedule = ({sched, matchSettingName, navigation}) => {
 				text={stage.name}
 				img={stage.image.url}
 				goto={"map-detail"}
-				gotoArg={stage.vsStageId}
+				gotoArg={{
+					id: stage.vsStageId,
+					name: stage.name,
+					img: stage.image.url
+				}}
 				navigation={navigation}
 			/>
 		)
@@ -31,7 +35,7 @@ export const Schedule = ({sched, matchSettingName, navigation}) => {
 	return (
 		<>
 			<FlatList
-				data = {sched}
+				data={sched}
 				renderItem={render_section}
 				keyExtractor={(item, index) => index.toString()}
 			/>
