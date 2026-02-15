@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
+import { ImageBackground, StyleSheet } from 'react-native'
 import { Home } from "./screens/home.js"
 import { Modes } from "./screens/modes.js"
 import { ScheduleTurf } from "./screens/schedules-turf.js"
@@ -15,6 +16,17 @@ import { MapsList } from "./screens/map-lists.js"
 const Stack = createNativeStackNavigator()
 
 SplashScreen.preventAutoHideAsync()
+
+import {DefaultTheme } from "@react-navigation/native"
+
+const theme = {
+	...DefaultTheme,
+	colors: {
+		...DefaultTheme.colors,
+		background: 'transparent',
+		card: 'transparent',
+	},
+}
 
 export default function app(){
 	const [fontsLoaded] = useFonts({
@@ -32,23 +44,42 @@ export default function app(){
 	}
 
 	return (
-		<NavigationContainer>
-			<Stack.Navigator
-				screenOptions={{
-					headerTitleStyle: {
-						fontFamily: 'Splatoon',
-					},
-				}}
-			>
-				<Stack.Screen name="Splatip" component={Home} />
-				<Stack.Screen name="Modes" component={Modes} />
-				<Stack.Screen name="Turf War schedules" component={ScheduleTurf} />
-				<Stack.Screen name="Anarchy Series schedules" component={ScheduleSeries} />
-				<Stack.Screen name="Anarchy Open schedules" component={ScheduleOpen} />
-				<Stack.Screen name="X Battles schedules" component={ScheduleX} />
-				<Stack.Screen name="Map detail" component={MapDetail} />
-				<Stack.Screen name="Map list" component={MapsList} />				
-			</Stack.Navigator>
-		</NavigationContainer>
+		<ImageBackground 
+			source={require('./assets/background.jpg')} 
+			style={styles.backgroundImage}
+			resizeMode="cover"
+		>
+			<NavigationContainer theme={theme}>
+				<Stack.Navigator
+					screenOptions={{
+						headerTitleStyle: {
+							fontFamily: 'Splatoon',
+							color: "white",
+						},
+						headerTransparent: false,
+						headerStyle: {
+							backgroundColor: 'transparent',
+						},
+					}}
+				>
+					<Stack.Screen name="Splatip" component={Home} />
+					<Stack.Screen name="Modes" component={Modes} />
+					<Stack.Screen name="Turf War schedules" component={ScheduleTurf} />
+					<Stack.Screen name="Anarchy Series schedules" component={ScheduleSeries} />
+					<Stack.Screen name="Anarchy Open schedules" component={ScheduleOpen} />
+					<Stack.Screen name="X Battles schedules" component={ScheduleX} />
+					<Stack.Screen name="Map detail" component={MapDetail} />
+					<Stack.Screen name="Map list" component={MapsList} />				
+				</Stack.Navigator>
+			</NavigationContainer>
+		</ImageBackground>
 	)
 }
+
+const styles = StyleSheet.create({
+	backgroundImage: {
+		flex: 1,
+		width: '100%',
+		height: '100%',
+	},
+})
