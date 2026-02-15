@@ -78,7 +78,7 @@ const Tip = ({item, weapons}) => {
 	)
 }
 
-export const TipsView = ({forId}) => {
+export const TipsView = ({forId, filterWeapon}) => {
 	const [tips, setTips] = useState(null)
 	const [weapons, setWeapons] = useState({})
 	const [loading, setLoading] = useState(true)
@@ -105,9 +105,13 @@ export const TipsView = ({forId}) => {
 		})
 	}, [forId])
 
+	const filteredTips = filterWeapon 
+		? tips?.filter(tip => tip.weapon?.id === filterWeapon)
+		: tips
+
 	return (loading ? <ActivityIndicator/> : error ? <Text>{error.toString()}</Text> :
 		<FlatList
-			data={tips}
+			data={filteredTips}
 			renderItem={({item}) => <Tip item={item} weapons={weapons} />}
 			keyExtractor={(item) => item.id}
 		/>
