@@ -1,7 +1,8 @@
 import { useState } from "react"
 
-import { Text, TextInput, Button, StyleSheet } from 'react-native'
+import { Text, TextInput, Button, StyleSheet, View } from 'react-native'
 import { addTip } from "../services/firebase"
+import { WeaponPicker } from "./weapon-picker"
 
 export const NewTip = ({forId}) => {
 	const [text, onChangeText] = useState("")
@@ -10,13 +11,25 @@ export const NewTip = ({forId}) => {
 	const [error, setError] = useState(null)
 
 	const submit = () => {
-		addTip({
-			content: text,
-			date: new Date(),
-			map: forId,
-			weapon: weapon
-		})
+		setDoneSubmitting(false)
+		setError(null)
+		
+		try {
+			addTip({
+				content: text,
+				date: new Date(),
+				map: forId,
+				weapon: weapon
+			})
+			setDoneSubmitting(true)
+			onChangeText("")
+		} catch (err) {
+			console.log(err)
+			setDoneSubmitting(null)
+			setError(err?.message || "Failed to submit tip")
+		}
 	}
+
 
 	const StatusHead = () => {
 		if (doneSubmitting == null){
@@ -51,17 +64,31 @@ export const NewTip = ({forId}) => {
 				value={text}
 				placeholder="Your tip"
 			/>
-			<Button
-				onPress={submit}
-				title="Submit"
-				style={styles.submit}
-			/>
+			<View style={styles.actionRow}>
+				<Button
+					onPress={submit}
+					title="Submit"
+					disabled={!text || text.trim() === ""}
+					style={styles.submit}
+				/>
+				<WeaponPicker 
+					selectedWeapon={weapon}
+					onWeaponSelect={setWeapon}
+				/>
+			</View>
 		</>
 
 	)
 }
 
 const styles = StyleSheet.create({
-	submit: {},
+	actionRow: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 10,
+	},
+	submit: {
+		flex: 1,
+	},
 	success: {}
 })
