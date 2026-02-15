@@ -21,19 +21,43 @@ export const WeaponPicker = ({ selectedWeapon, onWeaponSelect }) => {
 
 	const selectedWeaponData = weapons.find(w => w.id === selectedWeapon)
 
+	const unselectItem = {
+		id: null,
+		name: 'None',
+		img_url: null
+	}
+
+	const weaponsWithUnselect = [unselectItem, ...weapons]
+
 	const WeaponItem = ({ item }) => {
 		const isSelected = item.id === selectedWeapon
+		const isUnselectSlot = item.id === null
 		
 		return (
 			<Pressable 
-				style={[styles.weaponItem, isSelected && styles.selectedWeapon]}
+				style={[
+					styles.weaponItem, 
+					isSelected && styles.selectedWeapon,
+					isUnselectSlot && styles.unselectItem
+				]}
 				onPress={() => handleSelect(item.id)}
 			>
-				<Image 
-					style={styles.weaponImage}
-					source={{ uri: item.img_url }}
-				/>
-				<Text style={styles.weaponName}>{item.name}</Text>
+				{item.img_url ? (
+					<>
+						<Image 
+							style={styles.weaponImage}
+							source={{ uri: item.img_url }}
+						/>
+						<Text style={styles.weaponName}>{item.name}</Text>
+					</>
+				) : (
+					<>
+						<View style={styles.unselectIcon}>
+							<Text style={styles.unselectIconText}>✕</Text>
+						</View>
+						<Text style={styles.weaponName}>{item.name}</Text>
+					</>
+				)}
 			</Pressable>
 		)
 	}
@@ -67,9 +91,9 @@ export const WeaponPicker = ({ selectedWeapon, onWeaponSelect }) => {
 					<View style={styles.modalContent}>
 						<Text style={styles.modalTitle}>Choose a weapon</Text>
 						<FlatList
-							data={weapons}
+							data={weaponsWithUnselect}
 							renderItem={({ item }) => <WeaponItem item={item} />}
-							keyExtractor={(item) => item.id}
+							keyExtractor={(item) => item.id || 'unselect'}
 							numColumns={3}
 						/>
 						<Pressable 
@@ -147,4 +171,20 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ddd',
 		borderRadius: 5,
 	},
+	unselectItem: {
+		backgroundColor: '#f5f5f5',
+	},
+	unselectIcon: {
+		width: 60,
+		height: 60,
+		marginBottom: 5,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#ddd',
+		borderRadius: 5,
+	},
+	unselectIconText: {
+		fontSize: 36,
+		color: '#666',
+	}
 })
