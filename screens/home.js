@@ -31,8 +31,8 @@ export const Home = ({navigation, route}) => {
 				renderItem={({item}) =>
 					<Card
 						text={item.entry}
-						img={item.img}
 						goto={item.goto}
+						backgroundColor={item.backgroundColor}
 						navigation={navigation}
 					/>
 				}

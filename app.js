@@ -1,5 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import { useFonts } from 'expo-font'
+import * as SplashScreen from 'expo-splash-screen'
+import { useEffect } from 'react'
 import { Home } from "./screens/home.js"
 import { Modes } from "./screens/modes.js"
 import { ScheduleTurf } from "./screens/schedules-turf.js"
@@ -11,10 +14,32 @@ import { MapsList } from "./screens/map-lists.js"
 
 const Stack = createNativeStackNavigator()
 
+SplashScreen.preventAutoHideAsync()
+
 export default function app(){
+	const [fontsLoaded] = useFonts({
+		'Splatoon': require('./assets/fonts/Splatoon1.otf'),
+	})
+
+	useEffect(() => {
+		if (fontsLoaded) {
+			SplashScreen.hideAsync()
+		}
+	}, [fontsLoaded])
+
+	if (!fontsLoaded) {
+		return null
+	}
+
 	return (
 		<NavigationContainer>
-			<Stack.Navigator>
+			<Stack.Navigator
+				screenOptions={{
+					headerTitleStyle: {
+						fontFamily: 'Splatoon',
+					},
+				}}
+			>
 				<Stack.Screen name="Splatip" component={Home} />
 				<Stack.Screen name="Modes" component={Modes} />
 				<Stack.Screen name="Turf War schedules" component={ScheduleTurf} />

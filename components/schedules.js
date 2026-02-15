@@ -7,8 +7,6 @@ import {Card} from "./cards"
 
 export const Schedule = ({sched, matchSettingName, navigation}) => {
 
-
-
 	const RenderStage = ({stage}) => {
 		
 		// for convenience in development : see comment in firebase.js
