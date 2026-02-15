@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 
 import {Card} from "../components/cards"
 import {NewTip} from "../components/new-tip"
@@ -11,23 +11,46 @@ export const MapDetail = ({navigation, route}) => {
 	const [filterWeapon, setFilterWeapon] = useState(null)
 
 	return (
-		<>
+		<ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 			<Card
 				text={name}
 				img={img}
 			/>
-			<WeaponPicker
-				selectedWeapon={filterWeapon}
-				onWeaponSelect={setFilterWeapon}
-			/>
-			<NewTip
-				forId={id}
-			/>
-			<TipsView
-				forId={id}
-				filterWeapon={filterWeapon}
-			/>
-		</>
-
+			<View style={styles.section}>
+				<NewTip
+					forId={id}
+				/>
+			</View>
+			<View style={styles.section}>
+				<WeaponPicker
+					selectedWeapon={filterWeapon}
+					onWeaponSelect={setFilterWeapon}
+				/>
+			</View>
+			<View style={styles.tipsSection}>
+				<TipsView
+					forId={id}
+					filterWeapon={filterWeapon}
+				/>
+			</View>
+		</ScrollView>
 	)
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+	},
+	contentContainer: {
+		paddingBottom: 20,
+	},
+	section: {
+		marginHorizontal: 10,
+		marginVertical: 8,
+	},
+	tipsSection: {
+		flex: 1,
+		marginHorizontal: 10,
+		marginTop: 8,
+	}
+})
