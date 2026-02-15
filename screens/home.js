@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, FlatList } from 'react-native'
 
 import {Card} from "../components/cards"
+import { SplatoonText } from '../components/splatoon-text'
 
 const sections = [
 	{
@@ -20,7 +21,11 @@ export const Home = ({navigation, route}) => {
 	return (
 		<>
 			<View style={styles.title}>
-				<Text>Title card</Text>
+				<SplatoonText>
+					Welcome to Splatip ! A platform to share tips on upcoming splatoon rotations.
+					See also the permanent map index, to look up a map that is not planned for rotation soon.
+					Get good, and have fun !
+				</SplatoonText>
 			</View>
 			<View style={styles.container}>
 				<Text>Time to make an app</Text>
@@ -46,10 +51,11 @@ const styles = StyleSheet.create({
 	title: {
 		fontWeight: 'bold',
 		marginVertical: 8,
+		color: "white"
 	},
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: 'transparent',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
