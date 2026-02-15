@@ -10,13 +10,15 @@ export const Card = ({child, text, img, is_svg, goto, gotoArg, navigation, backg
 	const rotationAnim = useRef(new Animated.Value(0)).current
 
 	useEffect(() => {
-		Animated.spring(rotationAnim, {
-			toValue: targetRotation,
-			useNativeDriver: true,
-			friction: 5,
-			tension: 40
-		}).start()
-	}, [])
+		setTimeout(() => {
+			Animated.spring(rotationAnim, {
+				toValue: targetRotation,
+				useNativeDriver: true,
+				friction: 10,
+				tension: 60
+			}).start()
+		}, 300)
+	})
 
 	return (
 		<Pressable onPress={() => {if (navigation){ navigation.navigate(goto, gotoArg)}}}>
