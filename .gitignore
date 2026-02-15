@@ -40,4 +40,4 @@ yarn-error.*
 /ios
 /android
 
-services/firebase.js
+services/firebase-config.js
