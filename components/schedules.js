@@ -1,12 +1,19 @@
-import { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable} from 'react-native'
+import { useEffect } from 'react'
+import { StyleSheet, Text, View, FlatList} from 'react-native'
+
+import { ensureMap } from "../services/firebase"
 
 import {Card} from "./cards"
 
 export const Schedule = ({sched, matchSettingName, navigation}) => {
 
 
+
 	const RenderStage = ({stage}) => {
+		
+		// for convenience in development : see comment in firebase.js
+		ensureMap(stage)
+
 		return (
 			<Card
 				text={stage.name}
