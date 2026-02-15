@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { StyleSheet, Text, View, FlatList} from 'react-native'
+import { StyleSheet, Text, ImageBackground, FlatList} from 'react-native'
 
 import { ensureMap } from "../services/firebase"
 
@@ -49,13 +48,17 @@ export const Schedule = ({sched, matchSettingName, navigation}) => {
 	}
 
 	return (
-		<>
+		<ImageBackground 
+			source={require('../assets/background.jpg')} 
+			style={styles.backgroundImage}
+			resizeMode="cover"
+		>
 			<FlatList
 				data={sched}
 				renderItem={render_section}
 				keyExtractor={(item, index) => index.toString()}
 			/>
-		</>
+		</ImageBackground>
 	)
 
 }
@@ -66,5 +69,10 @@ const styles = StyleSheet.create({
 		fontFamily: 'Splatoon',
 		fontSize: 16,
 		marginVertical: 8,
-	}
+	},
+	backgroundImage: {
+		flex: 1,
+		width: '100%',
+		height: '100%',
+	},
 })

@@ -13,10 +13,10 @@ export const Card = ({child, text, img, is_svg, goto, gotoArg, navigation, backg
 			Animated.spring(rotationAnim, {
 				toValue: targetRotation,
 				useNativeDriver: true,
-				friction: 5,
-				tension: 40
+				friction: 10,
+				tension: 60
 			}).start()
-		}, 500)
+		}, 300)
 	}, [])
 
 	return (

@@ -1,8 +1,6 @@
-import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable} from 'react-native'
+import { StyleSheet, ImageBackground, FlatList } from 'react-native'
 
 import {Card} from "../components/cards"
-import {turf_sched, an_series_sched, an_open_sched, x_sched} from "../services/splat3"
-
 
 const sections = [
 	{
@@ -36,23 +34,37 @@ const sections = [
 export const Modes = ({navigation, route}) => {
 
 	return (
-		<FlatList
-			data={sections}
-			renderItem={({item}) => {
-				const Icon = item.img
-				return (
-					<Card
-						text={item.entry}
-						img={item.img}
-						is_svg={true}
-						goto={item.goto}
-						gotoArg={item.gotoArg}
-						backgroundColor={item.backgroundColor}
-						navigation={navigation}
-					/>
-				)
-			}}
-			keyExtractor={(item, index) => index.toString()}
-		/>
+		<ImageBackground 
+			source={require('../assets/background.jpg')} 
+			style={styles.backgroundImage}
+			resizeMode="cover"
+		>
+			<FlatList
+				data={sections}
+				renderItem={({item}) => {
+					const Icon = item.img
+					return (
+						<Card
+							text={item.entry}
+							img={item.img}
+							is_svg={true}
+							goto={item.goto}
+							gotoArg={item.gotoArg}
+							backgroundColor={item.backgroundColor}
+							navigation={navigation}
+						/>
+					)
+				}}
+				keyExtractor={(item, index) => index.toString()}
+			/>
+		</ImageBackground>
 	)
 }
+
+const styles = StyleSheet.create({
+	backgroundImage: {
+		flex: 1,
+		width: '100%',
+		height: '100%',
+	},
+})

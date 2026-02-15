@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ActivityIndicator, Text, FlatList, StyleSheet } from 'react-native'
+import { ActivityIndicator, ImageBackground, Text, FlatList, StyleSheet } from 'react-native'
 
 import { Card } from "../components/cards"
 import { getMaps } from "../services/firebase"
@@ -39,10 +39,25 @@ export const MapsList = ({navigation}) => {
 	}
 
 	return (loading ? <ActivityIndicator /> : error ? <Text>{error.toString()}</Text> :
-		<FlatList
-			data={maps}
-			renderItem={renderMap}
-			keyExtractor={(item) => item.id}
-		/>
+		<ImageBackground 
+			source={require('../assets/background.jpg')} 
+			style={styles.backgroundImage}
+			resizeMode="cover"
+		>
+			<FlatList
+				data={maps}
+				renderItem={renderMap}
+				keyExtractor={(item) => item.id}
+			/>
+		</ImageBackground>
 	)
 }
+
+
+const styles = StyleSheet.create({
+	backgroundImage: {
+		flex: 1,
+		width: '100%',
+		height: '100%',
+	},
+})

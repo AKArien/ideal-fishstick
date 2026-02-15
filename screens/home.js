@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, FlatList } from 'react-native'
 
 import {Card} from "../components/cards"
 import { SplatoonText } from '../components/splatoon-text'
@@ -20,11 +20,18 @@ const sections = [
 export const Home = ({navigation, route}) => {
 	return (
 		<>
-			<SplatoonText styles={styles.title}>
-				Welcome to Splatip ! A platform to share tips on upcoming splatoon rotations.
-				See also the permanent map index, to look up a map that is not planned for rotation soon.
-				Get good, and have fun !
-			</SplatoonText>
+			<ImageBackground 
+					source={require('../assets/background.jpg')} 
+					style={styles.backgroundImage}
+					resizeMode="cover"
+				>
+			<View style={styles.title}>
+				<SplatoonText style={styles.title}>
+					Welcome to Splatip ! A platform to share tips on upcoming splatoon rotations.
+					See also the permanent map index, to look up a map that is not planned for rotation soon.
+					Get good, and have fun !
+				</SplatoonText>
+			</View>
 			<View style={styles.container}>
 				<Text>Time to make an app</Text>
 			</View>
@@ -40,7 +47,7 @@ export const Home = ({navigation, route}) => {
 					/>
 				}
 				keyExtractor={(item) => item.goto}
-			/>
+			/></ImageBackground>
 		</>
 	);
 }
@@ -54,6 +61,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		marginVertical: 8,
-		color: "white"
+		color: "white",
+		fontSize: 18,
 	},
 });

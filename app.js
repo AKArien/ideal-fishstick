@@ -56,11 +56,11 @@ export default function app(){
 							fontFamily: 'Splatoon',
 							color: "white",
 						},
+						detachInactiveScreens: true,
 						headerTransparent: false,
 						headerStyle: {
 							backgroundColor: 'transparent',
 						},
-						contentStyle: { backgroundColor: 'rgba(0, 0, 0, 0.9)' }, // or your preferred opaque color
 					}}
 					options={{ headerTintColor: "#fff"}}
 				>
