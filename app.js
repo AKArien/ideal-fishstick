@@ -60,7 +60,9 @@ export default function app(){
 						headerStyle: {
 							backgroundColor: 'transparent',
 						},
+						contentStyle: { backgroundColor: 'rgba(0, 0, 0, 0.9)' }, // or your preferred opaque color
 					}}
+					options={{ headerTintColor: "#fff"}}
 				>
 					<Stack.Screen name="Splatip" component={Home} />
 					<Stack.Screen name="Modes" component={Modes} />
