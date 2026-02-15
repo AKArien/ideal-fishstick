@@ -3,26 +3,36 @@ import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable} from 'r
 import {Card} from "../components/cards"
 import {turf_sched, an_series_sched, an_open_sched, x_sched} from "../services/splat3"
 
+import TurfIcon from "../assets/turf-war.svg"
+import AnarchyIcon from "../assets/anarchy.svg"
+import XIcon from "../assets/x-battles.svg"
+
 const sections = [
 	{
 		entry: "Turf war",
 		goto: "Turf War schedules",
-		img: "",
+		img: <TurfIcon width={50} height={50} fill="#fff" />,
+		backgroundColor: "#00FF00"
 	},
 	{
 		entry: "Anarchy series",
 		goto: "Anarchy Series schedules",
-		img: "",
+		img: <AnarchyIcon width={50} height={50} fill="#fff" />,
+		backgroundColor: "#c9421c"
 	},
 	{
 		entry: "Anarchy open",
 		goto: "Anarchy Open schedules",
-		img: "",
+		img: <AnarchyIcon width={50} height={50} fill="#fff" />,
+		backgroundColor: "#c9421c"
+
 	},
 	{
 		entry: "X battles",
 		goto: "X Battles schedules",
-		img: "",
+		img: <XIcon width={50} height={50} fill="#fff" />,
+		backgroundColor: "#0ad1b3"
+
 	},
 ]
 
@@ -37,6 +47,7 @@ export const Modes = ({navigation, route}) => {
 					img={item.img}
 					goto={item.goto}
 					gotoArg={item.gotoArg}
+					backgroundColor={item.backgroundColor}
 					navigation={navigation}
 				/>
 			}
