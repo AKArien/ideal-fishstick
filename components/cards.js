@@ -3,7 +3,7 @@ import { StyleSheet, Pressable, Image, ImageBackground } from 'react-native'
 import { SvgUri } from 'react-native-svg'
 import { SplatoonText } from "./splatoon-text"
 
-export const Card = ({text, img, is_svg, goto, gotoArg, navigation, backgroundColor = '#b5b7b2'} ) => {
+export const Card = ({child, text, img, is_svg, goto, gotoArg, navigation, backgroundColor = '#b5b7b2'} ) => {
 	const [rotation, setRotation] = useState(0)
 
 	useEffect(() => {
@@ -21,19 +21,21 @@ export const Card = ({text, img, is_svg, goto, gotoArg, navigation, backgroundCo
 				<SplatoonText style={styles.overlayText}>
 					{text}
 				</SplatoonText>
-				{is_svg ? (
-					<SvgUri
-						uri={img}
-						width="100%"
-						height="100%"
-						style={styles.image}
-					/>
-				) : (
-					<Image
-						style={styles.image}
-						source={{uri: img}}
-						resizeMode="cover"
-					/>
+				{child ? child : (
+					is_svg ? (
+						<SvgUri
+							uri={img}
+							width="100%"
+							height="100%"
+							style={styles.image}
+						/>
+					) : (
+						<Image
+							style={styles.image}
+							source={{uri: img}}
+							resizeMode="cover"
+						/>
+					)
 				)}
 			</ImageBackground>
 		</Pressable>
