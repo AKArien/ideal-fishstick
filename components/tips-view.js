@@ -109,12 +109,11 @@ export const TipsView = ({forId, filterWeapon}) => {
 		? tips?.filter(tip => tip.weapon?.id === filterWeapon)
 		: tips
 
+	// render in a view because it is not scrollable, the TipsView container should be the one scrollable
 	return (loading ? <ActivityIndicator/> : error ? <Text>{error.toString()}</Text> :
-		<FlatList
-			data={filteredTips}
-			renderItem={({item}) => <Tip item={item} weapons={weapons} />}
-			keyExtractor={(item) => item.id}
-		/>
+		<View>
+			{filteredTips?.map((item) => <Tip key={item.id} item={item} weapons={weapons} />)}
+		</View>
 	)
 }
 
