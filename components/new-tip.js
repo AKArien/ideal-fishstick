@@ -1,13 +1,21 @@
-import { Text } from 'react-native'
+import { useState } from "react"
 
-export default NewTip = ({forId}) => {
-	const { forId } = props
+import { Text, TextInput, Button, StyleSheet } from 'react-native'
+import { addTip } from "../services/firebase"
+
+export const NewTip = ({forId}) => {
 	const [text, onChangeText] = useState("")
+	const [weapon, setWeapon] = useState(null)
 	const [doneSubmitting, setDoneSubmitting] = useState(null)
 	const [error, setError] = useState(null)
 
 	const submit = () => {
-		// call to firebase
+		addTip({
+			content: text,
+			date: new Date(),
+			map: forId,
+			weapon: weapon
+		})
 	}
 
 	const StatusHead = () => {
@@ -51,7 +59,9 @@ export default NewTip = ({forId}) => {
 		</>
 
 	)
-
-
 }
 
+const styles = StyleSheet.create({
+	submit: {},
+	success: {}
+})

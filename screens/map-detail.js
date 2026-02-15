@@ -1,10 +1,12 @@
+import {Card} from "../components/cards"
+import {NewTip} from "../components/new-tip"
+import {TipsView} from "../components/tips-view"
 
-export default Detail = ({navigation, route}) => {
+export const MapDetail = ({navigation, route}) => {
 	const { id, name, img } = route
 
 	// todo : put throbber colour by the match mode
 	return (
-		loading ? <ActivityIndicator /> : error ? <Text>error</Text> :
 		<>
 			<Card
 				text={name}
