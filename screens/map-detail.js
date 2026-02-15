@@ -5,6 +5,7 @@ import {Card} from "../components/cards"
 import {NewTip} from "../components/new-tip"
 import {TipsView} from "../components/tips-view"
 import {WeaponPicker} from "../components/weapon-picker"
+import { SplatoonText } from '../components/splatoon-text'
 
 export const MapDetail = ({navigation, route}) => {
 	const { id, name, img } = route.params
@@ -17,11 +18,20 @@ export const MapDetail = ({navigation, route}) => {
 				img={img}
 			/>
 			<View style={styles.section}>
+				<SplatoonText style={styles.explanationText}>
+					Feel free to leave a tip here. If it is specific to your weapon, select it !
+				</SplatoonText>
 				<NewTip
 					forId={id}
 				/>
 			</View>
+			<SplatoonText style={styles.explanationText}>
+				View below the tips left by other players
+			</SplatoonText>
 			<View style={styles.section}>
+				<SplatoonText style={styles.sortText}>
+					Sort tips by weapon :
+				</SplatoonText>
 				<WeaponPicker
 					selectedWeapon={filterWeapon}
 					onWeaponSelect={setFilterWeapon}
@@ -52,5 +62,15 @@ const styles = StyleSheet.create({
 		flex: 1,
 		marginHorizontal: 10,
 		marginTop: 8,
-	}
+	},
+	explanationText: {
+		marginLeft: "20",
+		fontSize: 16,
+		color: "white",
+	},
+	sortText: {
+		fontSize: 14,
+		marginLeft: "40",
+		color: "#ddd"
+	},
 })

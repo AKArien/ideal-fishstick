@@ -3,6 +3,7 @@ import { ActivityIndicator, Text, FlatList, Image, View, StyleSheet, TextInput, 
 
 import { getWeapons, updateTip, deleteTip, getTipsFiltered } from "../services/firebase"
 import { WeaponPicker } from "./weapon-picker"
+import { SplatoonText } from "./splatoon-text"
 
 const Tip = ({item, weapons}) => {
 	const [isEditing, setIsEditing] = useState(false)
@@ -60,14 +61,14 @@ const Tip = ({item, weapons}) => {
 
 	return (
 		<View style={styles.tipContainer}>
-			<Text>{item.content}</Text>
+			<SplatoonText style={styles.tipText}>{item.content}</SplatoonText>
 			{weapon && (
 				<View style={styles.weaponInfo}>
 					<Image 
 						style={styles.weaponIcon}
 						source={{ uri: weapon.img_url }}
 					/>
-					<Text style={styles.weaponName}>{weapon.name}</Text>
+					<SplatoonText style={styles.weaponName}>{weapon.name}</SplatoonText>
 				</View>
 			)}
 			<View style={styles.buttonRow}>
@@ -123,6 +124,10 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		borderBottomColor: '#ddd',
 	},
+	tipText: {
+		color: 'white',
+		fontSize: 14,
+	},
 	weaponInfo: {
 		flexDirection: 'row',
 		alignItems: 'center',
@@ -135,7 +140,7 @@ const styles = StyleSheet.create({
 	},
 	weaponName: {
 		fontSize: 12,
-		color: '#666',
+		color: '#aaa',
 	},
 	editInput: {
 		borderWidth: 1,

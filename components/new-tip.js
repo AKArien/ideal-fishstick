@@ -76,6 +76,7 @@ export const NewTip = ({forId}) => {
 					<WeaponPicker 
 						selectedWeapon={weapon}
 						onWeaponSelect={setWeapon}
+						style={styles.weaponPicker}
 					/>
 				</View>
 			</View>
@@ -101,8 +102,9 @@ const styles = StyleSheet.create({
 	controlsColumn: {
 		justifyContent: 'space-between',
 		gap: 10,
+		width: "25%"
 	},
 	success: {
 		color: 'white',
 	}
-})
+	})

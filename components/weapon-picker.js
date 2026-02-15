@@ -142,7 +142,8 @@ dropdownButton: {
 	borderWidth: 1,
 	borderColor: '#ccc',
 	borderRadius: 5,
-	maxWidth: "25%",
+	minHeight: 50, // Minimum height
+	maxHeight: 50, // Maximum height to prevent expansion
 },
 selectedImage: {
 	width: 30,
