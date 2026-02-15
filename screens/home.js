@@ -11,7 +11,7 @@ const sections = [
 	},
 	{
 		entry: "View by map",
-		goto: "maps",
+		goto: "Map list",
 		img: "",
 	},
 	{

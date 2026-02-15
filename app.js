@@ -7,6 +7,7 @@ import { ScheduleSeries } from "./screens/schedules-series.js"
 import { ScheduleOpen } from "./screens/schedules-open.js"
 import { ScheduleX } from "./screens/schedules-x.js"
 import { MapDetail } from "./screens/map-detail.js"
+import { MapsList } from "./screens/map-lists.js"
 
 const Stack = createNativeStackNavigator()
 
@@ -20,7 +21,8 @@ export default function app(){
 				<Stack.Screen name="schedules-series" component={ScheduleSeries} />
 				<Stack.Screen name="schedules-open" component={ScheduleOpen} />
 				<Stack.Screen name="schedules-x" component={ScheduleX} />
-				<Stack.Screen name="map-detail" component={MapDetail} />				
+				<Stack.Screen name="map-detail" component={MapDetail} />
+				<Stack.Screen name="Map list" component={MapsList} />				
 			</Stack.Navigator>
 		</NavigationContainer>
 	)

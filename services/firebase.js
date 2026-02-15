@@ -2,7 +2,8 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore,collection,addDoc,query,orderBy,where,onSnapshot,
   doc,
   updateDoc,
-  deleteDoc
+  deleteDoc,
+  setDoc
 } from 'firebase/firestore'
 
 import {firebaseConfig} from "./firebase-config.js"
@@ -31,7 +32,7 @@ export const getTipsFiltered = (mapId, callback) => {
       orderBy('date', 'desc')
     )
   } else {
-    q = query(collection(db, 'tips'), orderBy('date', 'desc'))
+    q = query(collection(db, 'tips'), orderBy('date'))
   }
   
   return onSnapshot(q, snapshot => {
@@ -65,7 +66,7 @@ export const deleteTip = tip => {
 
 
 export const getWeapons = (callback) => {
-  const q = query(collection(db, 'weapons'), orderBy('class', 'name'))
+  const q = query(collection(db, 'weapons'), orderBy('class'), orderBy("name"))
   onSnapshot(q, snapshot => {
     let weapons = []
     snapshot.forEach(doc => {
@@ -73,4 +74,26 @@ export const getWeapons = (callback) => {
     })
     callback(weapons)
   })
+}
+
+
+export const getMaps = (callback) => {
+  const q = query(collection(db, 'maps'), orderBy('name'))
+  onSnapshot(q, snapshot => {
+    let maps = []
+    snapshot.forEach(doc => {
+      maps.push({ id: doc.id, ...doc.data() })
+    })
+    callback(maps)
+  })
+}
+
+// this is for convenience of development, used by schedules.
+// in actual release, it’s role would be filled by a cron job or the like.
+export const ensureMap = (mapData) => {
+  const mapRef = doc(db, 'maps', mapData.vsStageId.toString())
+  setDoc(mapRef, {
+    name: mapData.name,
+    img_url: mapData.image.url
+  }, { merge: true })
 }
