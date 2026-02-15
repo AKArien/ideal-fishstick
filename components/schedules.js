@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable} from 'react-native'
 
-export const Schedule = ({sched, navigation}) => {
-	
+import {Card} from "./cards"
+
+export const Schedule = ({sched, matchSettingName, navigation}) => {
+
+
 	const RenderStage = ({stage}) => {
 		return (
 			<Card
@@ -15,12 +18,12 @@ export const Schedule = ({sched, navigation}) => {
 		)
 	}
 
-	const render_section = (item) => {
+	const render_section = ({item}) => {
 		return (
 			<>
 				
-				<RenderStage stage={item["0"]} />
-				<RenderStage stage={item["1"]} />
+				<RenderStage stage={item[matchSettingName].vsStages["0"]} />
+				<RenderStage stage={item[matchSettingName].vsStages["1"]} />
 			</>
 		)
 	}
@@ -30,7 +33,7 @@ export const Schedule = ({sched, navigation}) => {
 			<FlatList
 				data = {sched}
 				renderItem={render_section}
-				keyExtractor={(item, index) => item[index]}
+				keyExtractor={(item, index) => index.toString()}
 			/>
 		</>
 	)

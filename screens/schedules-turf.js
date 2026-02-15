@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Text } from 'react-native';
 
 import {Schedule} from "../components/schedules";
 import {turf_sched} from "../services/splat3";
@@ -13,6 +13,7 @@ export const ScheduleTurf = ({navigation, route}) => {
 		async function get(){
 			try {
 				setSched(await turf_sched())
+				console.log('SCHED DATA:', JSON.stringify(sched, null, 2))
 				setLoading(false)
 			}
 			catch (error){
@@ -23,9 +24,10 @@ export const ScheduleTurf = ({navigation, route}) => {
 		get()
 	}, [])
 
-    return (loading ? <ActivityIndicator /> : error ? <Text>{toString(error)}</Text> :
+    return (loading ? <ActivityIndicator /> : error ? <Text>{error.toString()}</Text> :
         <Schedule
             sched={sched}
+			matchSettingName={"regularMatchSetting"}
 			navigation={navigation}
         />
     )

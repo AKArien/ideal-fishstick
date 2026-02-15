@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Text } from 'react-native';
 
 import {Schedule} from "../components/schedules";
 import {an_open_sched} from "../services/splat3";
@@ -26,6 +26,7 @@ export const ScheduleOpen = ({navigation, route}) => {
     return (loading ? <ActivityIndicator /> : error ? <Text>{toString(error)}</Text> :
         <Schedule
             sched={sched}
+			matchSettingName={"bankaraMatchSettings"}
 			navigation={navigation}
         />
     )

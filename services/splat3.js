@@ -1,21 +1,29 @@
 import {get_w_cache} from "./api_cache.js"
 
 export const schedules_all = async () => {
-	return await get_w_cache("https://splatoon3.ink/data/schedules.json", 60 * 60 * 1000)
+	const d = await get_w_cache("https://splatoon3.ink/data/schedules.json", 60 * 60 * 1000)
+	console.log(d)
+	return d
 }
 
 export const turf_sched = async () => {
-	return await schedules_all.regularSchedules.nodes
+	const data = await schedules_all()
+	const nodes = data.data.regularSchedules.nodes
+	console.log(nodes)
+	return nodes
 }
 
 // extracts data from bankara schedules, as it’s formatted slightly differently, into the same format as the others
 const an_sched_helper = async (index) => {
-	const reconstruct = await schedules_all.bankaraSchedules.nodes
-	await schedules_all.bankaraSchedules.nodes.forEach(element => {
-		reconstruct[toString(element)].bankaraMatchSettings = reconstruct[toString(element)].bankaraMatchSettings[index]
-	});
-	return reconstruct
+	const data = await schedules_all()
+	const nodes = data.data.bankaraSchedules.nodes
+	
+	return nodes.map(element => ({
+		...element,
+		bankaraMatchSettings: element.bankaraMatchSettings[index]
+	}))
 }
+
 
 export const an_series_sched = async () => {
 	return await an_sched_helper("0")
@@ -26,5 +34,6 @@ export const an_open_sched = async () => {
 }
 
 export const x_sched = async () => {
-	return await schedules_all.xSchedules.nodes
+	const data = await schedules_all()
+	return data.data.xSchedules.nodes
 }
