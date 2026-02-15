@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, ImageBackground, FlatList } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, Image, FlatList } from 'react-native'
 
 import {Card} from "../components/cards"
 import { SplatoonText } from '../components/splatoon-text'
@@ -8,12 +8,16 @@ const sections = [
 	{
 		entry: "View by modes",
 		goto: "Modes",
-		img: "",
+		img: require("../assets/battle-icons.png"),
+		style: {width: '80%', height: '100%'},
+		resizeMode: "contain",
 	},
 	{
 		entry: "View by map",
 		goto: "Map list",
-		img: "",
+		img: require("../assets/any-map.png"),
+		style: {width: '100%', height: '100%'},
+		resizeMode: "fill",
 	}
 ]
 
@@ -42,6 +46,7 @@ export const Home = ({navigation, route}) => {
 					<Card
 						text={item.entry}
 						goto={item.goto}
+						child={<Image source={item.img} style={item.style} resizeMode={item.resizeMode}/>}
 						backgroundColor={item.backgroundColor}
 						navigation={navigation}
 					/>
