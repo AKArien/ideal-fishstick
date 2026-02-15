@@ -26,6 +26,7 @@ export const ScheduleOpen = ({navigation, route}) => {
     return (loading ? <ActivityIndicator /> : error ? <Text>{toString(error)}</Text> :
         <Schedule
             sched={sched}
+			navigation={navigation}
         />
     )
 }

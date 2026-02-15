@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable} from 'react-native'
 
-export const Schedule = (sched, navigation) => {
+export const Schedule = ({sched, navigation}) => {
 	
 	const RenderStage = ({stage}) => {
 		return (
