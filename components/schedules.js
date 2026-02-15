@@ -18,7 +18,7 @@ export const Schedule = ({sched, matchSettingName, navigation}) => {
 			<Card
 				text={stage.name}
 				img={stage.image.url}
-				goto={"map-detail"}
+				goto={"Map detail"}
 				gotoArg={{
 					id: stage.vsStageId,
 					name: stage.name,

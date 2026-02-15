@@ -15,13 +15,13 @@ export default function app(){
 	return (
 		<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen name="home" component={Home} />
-				<Stack.Screen name="modes" component={Modes} />
-				<Stack.Screen name="schedules-turf" component={ScheduleTurf} />
-				<Stack.Screen name="schedules-series" component={ScheduleSeries} />
-				<Stack.Screen name="schedules-open" component={ScheduleOpen} />
-				<Stack.Screen name="schedules-x" component={ScheduleX} />
-				<Stack.Screen name="map-detail" component={MapDetail} />
+				<Stack.Screen name="Splatip" component={Home} />
+				<Stack.Screen name="Modes" component={Modes} />
+				<Stack.Screen name="Turf War schedules" component={ScheduleTurf} />
+				<Stack.Screen name="Anarchy Series schedules" component={ScheduleSeries} />
+				<Stack.Screen name="Anarchy Open schedules" component={ScheduleOpen} />
+				<Stack.Screen name="X Battles schedules" component={ScheduleX} />
+				<Stack.Screen name="Map detail" component={MapDetail} />
 				<Stack.Screen name="Map list" component={MapsList} />				
 			</Stack.Navigator>
 		</NavigationContainer>

@@ -27,7 +27,7 @@ export const MapsList = ({navigation}) => {
 			<Card
 				text={item.name}
 				img={item.img_url}
-				goto={"map-detail"}
+				goto={"Map detail"}
 				gotoArg={{
                     id: item.id,
                     name: item.name,

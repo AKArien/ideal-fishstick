@@ -6,22 +6,22 @@ import {turf_sched, an_series_sched, an_open_sched, x_sched} from "../services/s
 const sections = [
 	{
 		entry: "Turf war",
-		goto: "schedules-turf",
+		goto: "Turf War schedules",
 		img: "",
 	},
 	{
 		entry: "Anarchy series",
-		goto: "schedules-series",
+		goto: "Anarchy Series schedules",
 		img: "",
 	},
 	{
 		entry: "Anarchy open",
-		goto: "schedules-open",
+		goto: "Anarchy Open schedules",
 		img: "",
 	},
 	{
 		entry: "X battles",
-		goto: "schedules-x",
+		goto: "X Battles schedules",
 		img: "",
 	},
 ]

@@ -5,20 +5,15 @@ import {Card} from "../components/cards"
 
 const sections = [
 	{
-		entry: "Modes",
-		goto: "modes",
+		entry: "View by modes",
+		goto: "Modes",
 		img: "",
 	},
 	{
 		entry: "View by map",
 		goto: "Map list",
 		img: "",
-	},
-	{
-		entry: "View by weapon",
-		goto: "weapons",
-		img: "",
-	},
+	}
 ]
 
 export const Home = ({navigation, route}) => {

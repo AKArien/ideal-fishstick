@@ -13,7 +13,6 @@ export const ScheduleTurf = ({navigation, route}) => {
 		async function get(){
 			try {
 				setSched(await turf_sched())
-				console.log('SCHED DATA:', JSON.stringify(sched, null, 2))
 				setLoading(false)
 			}
 			catch (error){
