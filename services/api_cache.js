@@ -11,11 +11,13 @@ export const get_w_cache = async (url, age_limit) => {
 		if (cached_time && current_time - parseInt(cached_time, 10) < age_limit) {
 			const cached_data = await AsyncStorage.getItem(cache_key)
 			if (cached_data) {
+				console.log("Loaded cache for request to " + url)
 				return JSON.parse(cached_data)
 			}
 		}
 
 		// cache is too old, refetch
+		console.log("Made a request to " + url)
 		const response = await fetch(url)
 		if (!response.ok) {
 			throw new Error(`API call failed: ${response.status}`)

@@ -2,14 +2,12 @@ import {get_w_cache} from "./api_cache.js"
 
 export const schedules_all = async () => {
 	const d = await get_w_cache("https://splatoon3.ink/data/schedules.json", 60 * 60 * 1000)
-	console.log(d)
 	return d
 }
 
 export const turf_sched = async () => {
 	const data = await schedules_all()
 	const nodes = data.data.regularSchedules.nodes
-	console.log(nodes)
 	return nodes
 }
 
