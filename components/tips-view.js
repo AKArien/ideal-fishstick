@@ -52,8 +52,12 @@ const Tip = ({item, weapons}) => {
 					onWeaponSelect={setEditWeapon}
 				/>
 				<View style={styles.buttonRow}>
-					<Button title="Save" onPress={saveEdit} />
-					<Button title="Cancel" onPress={cancelEdit} />
+					<Pressable style={styles.saveButton} onPress={saveEdit}>
+						<SplatoonText style={styles.buttonText}>Save</SplatoonText>
+					</Pressable>
+					<Pressable style={styles.cancelButton} onPress={cancelEdit}>
+						<SplatoonText style={styles.buttonText}>Cancel</SplatoonText>
+					</Pressable>
 				</View>
 			</View>
 		)
@@ -72,8 +76,12 @@ const Tip = ({item, weapons}) => {
 				</View>
 			)}
 			<View style={styles.buttonRow}>
-				<Button title="Edit" onPress={startEdit} />
-				<Button title="Delete" onPress={handleDelete} />
+				<Pressable style={styles.editButton} onPress={startEdit}>
+					<SplatoonText style={styles.buttonText}>Edit</SplatoonText>
+				</Pressable>
+				<Pressable style={styles.deleteButton} onPress={handleDelete}>
+					<SplatoonText style={styles.buttonText}>Delete</SplatoonText>
+				</Pressable>
 			</View>
 		</View>
 	)
@@ -117,7 +125,6 @@ export const TipsView = ({forId, filterWeapon}) => {
 		</View>
 	)
 }
-
 const styles = StyleSheet.create({
 	tipContainer: {
 		padding: 10,
@@ -148,10 +155,43 @@ const styles = StyleSheet.create({
 		padding: 5,
 		marginBottom: 10,
 		minHeight: 60,
+		color: 'white',
+		fontFamily: 'Splatoon',
 	},
 	buttonRow: {
 		flexDirection: 'row',
 		gap: 10,
 		marginTop: 10,
+	},
+	editButton: {
+		flex: 1,
+		padding: 10,
+		alignItems: 'center',
+		backgroundColor: '#3498db',
+		borderRadius: 5,
+	},
+	deleteButton: {
+		flex: 1,
+		padding: 10,
+		alignItems: 'center',
+		backgroundColor: '#e74c3c',
+		borderRadius: 5,
+	},
+	saveButton: {
+		flex: 1,
+		padding: 10,
+		alignItems: 'center',
+		backgroundColor: '#2ecc71',
+		borderRadius: 5,
+	},
+	cancelButton: {
+		flex: 1,
+		padding: 10,
+		alignItems: 'center',
+		backgroundColor: '#95a5a6',
+		borderRadius: 5,
+	},
+	buttonText: {
+		color: 'white',
 	},
 })

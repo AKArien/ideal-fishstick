@@ -28,14 +28,16 @@ export const MapDetail = ({navigation, route}) => {
 			<SplatoonText style={styles.explanationText}>
 				View below the tips left by other players
 			</SplatoonText>
-			<View style={styles.section}>
+			<View style={[styles.section, styles.filterRow]}>
 				<SplatoonText style={styles.sortText}>
 					Sort tips by weapon :
 				</SplatoonText>
-				<WeaponPicker
-					selectedWeapon={filterWeapon}
-					onWeaponSelect={setFilterWeapon}
-				/>
+				<View style={styles.w_p_cont}>
+					<WeaponPicker
+						selectedWeapon={filterWeapon}
+						onWeaponSelect={setFilterWeapon}
+					/>
+				</View>
 			</View>
 			<View style={styles.tipsSection}>
 				<TipsView
@@ -70,7 +72,15 @@ const styles = StyleSheet.create({
 	},
 	sortText: {
 		fontSize: 14,
-		marginLeft: "40",
-		color: "#ddd"
+		marginLeft: 8,
+		color: "#ddd",
+	},
+		filterRow: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 10,
+	},
+	w_p_cont: { // i don’t like having this, but it’s the only way i found
+		flex: 1,
 	},
 })
