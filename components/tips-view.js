@@ -40,10 +40,10 @@ const Answer = ({ tipId, item }) => {
 					/>
 				</View>
 				<View style={styles.buttonColumn}>
-					<Pressable style={styles.saveButton} onPress={saveEdit}>
+					<Pressable style={[styles.actionButton, styles.saveButton]} onPress={saveEdit}>
 						<SplatoonText style={styles.buttonText} numberOfLines={1} ellipsizeMode="tail">Save</SplatoonText>
 					</Pressable>
-					<Pressable style={styles.cancelButton} onPress={cancelEdit}>
+					<Pressable style={[styles.actionButton, styles.cancelButton]} onPress={cancelEdit}>
 						<SplatoonText style={styles.buttonText} numberOfLines={1} ellipsizeMode="tail">Cancel</SplatoonText>
 					</Pressable>
 				</View>
@@ -57,10 +57,10 @@ const Answer = ({ tipId, item }) => {
 				<SplatoonText style={styles.answerText}>{item.content}</SplatoonText>
 			</View>
 			<View style={styles.buttonColumn}>
-				<Pressable style={styles.editButton} onPress={startEdit}>
+				<Pressable style={[styles.actionButton, styles.editButton]} onPress={startEdit}>
 					<SplatoonText style={styles.buttonText} numberOfLines={1} ellipsizeMode="tail">Edit</SplatoonText>
 				</Pressable>
-				<Pressable style={styles.deleteButton} onPress={handleDelete}>
+				<Pressable style={[styles.actionButton, styles.deleteButton]} onPress={handleDelete}>
 					<SplatoonText style={styles.buttonText} numberOfLines={1} ellipsizeMode="tail">Delete</SplatoonText>
 				</Pressable>
 			</View>
@@ -101,7 +101,7 @@ const AnswersThread = ({ tipId }) => {
 					/>
 				</View>
 				<View style={styles.buttonColumn}>
-					<Pressable style={styles.saveButton} onPress={handleAddAnswer}>
+					<Pressable style={[styles.actionButton, styles.saveButton]} onPress={handleAddAnswer}>
 						<SplatoonText style={styles.buttonText} numberOfLines={1} ellipsizeMode="tail">Add</SplatoonText>
 					</Pressable>
 				</View>
@@ -160,14 +160,15 @@ const Tip = ({item, weapons}) => {
 						/>
 					</View>
 					<View style={styles.buttonColumn}>
-						<Pressable style={styles.saveButton} onPress={saveEdit}>
+						<Pressable style={[styles.actionButton, styles.saveButton]} onPress={saveEdit}>
 							<SplatoonText style={styles.buttonText} numberOfLines={1} ellipsizeMode="tail">Save</SplatoonText>
 						</Pressable>
-						<Pressable style={styles.cancelButton} onPress={cancelEdit}>
+						<Pressable style={[styles.actionButton, styles.cancelButton]} onPress={cancelEdit}>
 							<SplatoonText style={styles.buttonText} numberOfLines={1} ellipsizeMode="tail">Cancel</SplatoonText>
 						</Pressable>
 					</View>
 				</View>
+				<AnswersThread tipId={item.id} />
 			</View>
 		)
 	}
@@ -188,10 +189,10 @@ const Tip = ({item, weapons}) => {
 					)}
 				</View>
 				<View style={styles.buttonColumn}>
-					<Pressable style={styles.editButton} onPress={startEdit}>
+					<Pressable style={[styles.actionButton, styles.editButton]} onPress={startEdit}>
 						<SplatoonText style={styles.buttonText} numberOfLines={1} ellipsizeMode="tail">Edit</SplatoonText>
 					</Pressable>
-					<Pressable style={styles.deleteButton} onPress={handleDelete}>
+					<Pressable style={[styles.actionButton, styles.deleteButton]} onPress={handleDelete}>
 						<SplatoonText style={styles.buttonText} numberOfLines={1} ellipsizeMode="tail">Delete</SplatoonText>
 					</Pressable>
 				</View>
@@ -283,29 +284,22 @@ const styles = StyleSheet.create({
 		gap: 5,
 		minWidth: 60,
 	},
-	editButton: {
+	actionButton: {
 		padding: 10,
 		alignItems: 'center',
-		backgroundColor: '#3498db',
 		borderRadius: 5,
+	},
+	editButton: {
+		backgroundColor: '#3498db',
 	},
 	deleteButton: {
-		padding: 10,
-		alignItems: 'center',
 		backgroundColor: '#e74c3c',
-		borderRadius: 5,
 	},
 	saveButton: {
-		padding: 10,
-		alignItems: 'center',
 		backgroundColor: '#2ecc71',
-		borderRadius: 5,
 	},
 	cancelButton: {
-		padding: 10,
-		alignItems: 'center',
 		backgroundColor: '#95a5a6',
-		borderRadius: 5,
 	},
 	buttonText: {
 		color: 'white',
