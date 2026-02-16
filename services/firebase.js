@@ -64,6 +64,36 @@ export const deleteTip = tip => {
   deleteDoc(doc(db, 'tips', tip.id))
 }
 
+export const getAnswers = (tipId, callback) => {
+  const q = query(
+    collection(db, 'tips', tipId, 'answers'),
+    orderBy('date', 'asc')
+  )
+  return onSnapshot(q, snapshot => {
+    let answers = []
+    snapshot.forEach(doc => {
+      answers.push({ id: doc.id, ...doc.data() })
+    })
+    callback(answers)
+  })
+}
+
+
+export const addAnswer = (tipId, content) => {
+  addDoc(collection(db, 'tips', tipId, 'answers'), {
+    content,
+    date: new Date()
+  })
+}
+
+export const updateAnswer = (tipId, answerId, content) => {
+  updateDoc(doc(db, 'tips', tipId, 'answers', answerId), { content })
+}
+
+export const deleteAnswer = (tipId, answerId) => {
+  deleteDoc(doc(db, 'tips', tipId, 'answers', answerId))
+}
+
 
 export const getWeapons = (callback) => {
   const q = query(collection(db, 'weapons'), orderBy('class'), orderBy("name"))
