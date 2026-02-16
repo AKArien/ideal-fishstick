@@ -64,6 +64,7 @@ export const deleteTip = tip => {
   deleteDoc(doc(db, 'tips', tip.id))
 }
 
+
 export const getAnswers = (tipId, callback) => {
   const q = query(
     collection(db, 'tips', tipId, 'answers'),
@@ -77,7 +78,6 @@ export const getAnswers = (tipId, callback) => {
     callback(answers)
   })
 }
-
 
 export const addAnswer = (tipId, content) => {
   addDoc(collection(db, 'tips', tipId, 'answers'), {
