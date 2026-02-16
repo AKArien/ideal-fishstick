@@ -27,13 +27,11 @@ export const MapsList = ({navigation}) => {
 			<Card
 				text={item.name}
 				img={item.img_url}
-				goto={"Map detail"}
-				gotoArg={{
-                    id: item.id,
-                    name: item.name,
-                    img:item.img_url
-                }}
-				navigation={navigation}
+				onPress={() => {navigation.navigate("Map detail", {
+					id: item.id,
+					name: item.name,
+					img: item.img_url
+				})}}
 			/>
 		)
 	}

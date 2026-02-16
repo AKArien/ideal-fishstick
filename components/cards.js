@@ -5,7 +5,11 @@ import { SplatoonText } from "./splatoon-text"
 
 const AnimatedImageBackground = Animated.createAnimatedComponent(ImageBackground)
 
-export const Card = ({child, text, img, is_svg, goto, gotoArg, navigation, backgroundColor = '#b5b7b2'} ) => {
+// this component is a bit weird and seems too big for how small it is,
+// however, it is needed as such because these features are needed at the same time
+// for example, the background tapes serve when displaying the match icons, while
+// serving as a placeholder for when maps images are slow to load.
+export const Card = ({text, img, is_svg, child, onPress, backgroundColor = '#b5b7b2'} ) => {
 	const [targetRotation] = useState((Math.random() - 0.5) * 6)
 	const rotationAnim = useRef(new Animated.Value(0)).current
 
@@ -21,7 +25,7 @@ export const Card = ({child, text, img, is_svg, goto, gotoArg, navigation, backg
 	})
 
 	return (
-		<Pressable onPress={() => {if (navigation){ navigation.navigate(goto, gotoArg)}}}>
+		<Pressable onPress={() => {if (onPress){ onPress()}}}>
 			<AnimatedImageBackground
 				source={require('../assets/tapes-transparent.png')}
 				style={[styles.card, { backgroundColor, transform: [{ rotate: rotationAnim.interpolate({

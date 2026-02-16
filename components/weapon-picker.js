@@ -108,6 +108,7 @@ export const WeaponPicker = ({ selectedWeapon, onWeaponSelect }) => {
 						onPress={(e) => e.stopPropagation()}
 					>
 						<Card
+							text={"Filter by weapon"}
 							child={
 								<View style={styles.cardInner}>
 									<FlatList

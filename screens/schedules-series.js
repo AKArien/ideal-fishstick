@@ -4,7 +4,7 @@ import { ActivityIndicator, Text } from 'react-native';
 import {Schedule} from "../components/schedules";
 import {an_series_sched} from "../services/splat3";
 
-export const ScheduleSeries = ({navigation, route}) => {
+export const ScheduleSeries = ({navigation}) => {
     const [sched, setSched] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);

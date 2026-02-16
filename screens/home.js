@@ -45,10 +45,9 @@ export const Home = ({navigation, route}) => {
 				renderItem={({item}) =>
 					<Card
 						text={item.entry}
-						goto={item.goto}
+						onPress={() => {navigation.navigate(item.goto)}}
 						child={<Image source={item.img} style={item.style} resizeMode={item.resizeMode}/>}
 						backgroundColor={item.backgroundColor}
-						navigation={navigation}
 					/>
 				}
 				keyExtractor={(item) => item.goto}

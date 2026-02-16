@@ -15,13 +15,11 @@ export const Schedule = ({sched, matchSettingName, navigation}) => {
 			<Card
 				text={stage.name}
 				img={stage.image.url}
-				goto={"Map detail"}
-				gotoArg={{
+				onPress={() => {navigation.navigate("Map detail", {
 					id: stage.vsStageId,
 					name: stage.name,
 					img: stage.image.url
-				}}
-				navigation={navigation}
+				})}}
 			/>
 		)
 	}

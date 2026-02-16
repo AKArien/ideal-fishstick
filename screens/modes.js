@@ -48,10 +48,8 @@ export const Modes = ({navigation, route}) => {
 							text={item.entry}
 							img={item.img}
 							is_svg={true}
-							goto={item.goto}
-							gotoArg={item.gotoArg}
+							onPress={() => {navigation.navigate(item.goto)}}
 							backgroundColor={item.backgroundColor}
-							navigation={navigation}
 						/>
 					)
 				}}
